@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,18 +8,21 @@ import java.awt.event.ActionListener;
 // CalGUI2 클래스가 판때기(JFrame) 기능을 사용하기 위해 상속 받음
 // is a 관계 => CalGUI2는 판때기다.
 public class CalGUI2 extends JFrame implements ActionListener {
-    //    JFrame f;   // 판때기
-    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;  // 버튼
+
+    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
     JButton clear;
-    JTextField jtf; // 한 줄 입력
-    JButton bAdd, bSub,bMulti, bDivi, bResult;
+    JTextField jtf;
+    JButton bAdd, bSub, bMulti, bDivi, bResult;
+
     public CalGUI2() {
-//        f = new JFrame();
-        // 화면 배치 관리자: FlowLayout -> 가장 기본 배치관리자 들어오는 순서대로 화면에 배치
+
+        // 화면 배치 관리자: FlowLayout
         FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);  // 판때기에 화면 배치 관리 설정
+        this.setLayout(layout);
+
         jtf = new JTextField(10);
-//        b = new JButton("상속된 판때기");
+
+        // 숫자 버튼 생성
         b0 = new JButton("0");
         b1 = new JButton("1");
         b2 = new JButton("2");
@@ -30,24 +34,24 @@ public class CalGUI2 extends JFrame implements ActionListener {
         b8 = new JButton("8");
         b9 = new JButton("9");
 
+        // 연산자 버튼 생성
         bAdd = new JButton("+");
         bSub = new JButton("-");
         bMulti = new JButton("*");
         bDivi = new JButton("/");
         bResult = new JButton("=");
 
+        // 버튼 감시자 등록
         b0.addActionListener(this);
-        b1.addActionListener(this); // b1 버튼 감시자 등록
-        b2.addActionListener(this); // b2 버튼 감시자 등록
-        b3.addActionListener(this); // b3 버튼 감시자 등록
-        b4.addActionListener(this); // b4 버튼 감시자 등록
-        b5.addActionListener(this); // b5 버튼 감시자 등록
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
         b6.addActionListener(this);
         b7.addActionListener(this);
         b8.addActionListener(this);
         b9.addActionListener(this);
-
-
 
         bAdd.addActionListener(this);
         bSub.addActionListener(this);
@@ -55,16 +59,20 @@ public class CalGUI2 extends JFrame implements ActionListener {
         bDivi.addActionListener(this);
         bResult.addActionListener(this);
 
-
+        // 클리어 버튼 생성
         clear = new JButton("C");
         clear.setBackground(Color.RED);
         clear.addActionListener(this);
+
+        // 화면에 컴포넌트 추가
         this.add(jtf);
+
         this.add(b0);
         this.add(b1);
         this.add(b2);
         this.add(b3);
         this.add(b4);
+        this.add(b5);
         this.add(b6);
         this.add(b7);
         this.add(b8);
@@ -77,10 +85,10 @@ public class CalGUI2 extends JFrame implements ActionListener {
         this.add(bDivi);
         this.add(bResult);
 
-
-        this.setSize(500, 300); // 판때기 크기
-        this.setLocation(300, 300); // 판때기 위치
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   // 강제 종료 활성화
+        // 화면 설정
+        this.setSize(500, 300);
+        this.setLocation(300, 300);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
@@ -88,41 +96,46 @@ public class CalGUI2 extends JFrame implements ActionListener {
         new CalGUI2();
     }
 
-    //callmethod
+    // 버튼 클릭 시 실행되는 메소드
     public void actionPerformed(ActionEvent e) {
+
         String str = e.getActionCommand(); // 클릭된 버튼 이름 가져오기
 
+        switch (str) {
 
-        // 클리어 버튼
-        if (str.equals("C")) {
-            jtf.setText("");
-        } else{
-            jtf.setText(jtf.getText() + str);
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "0":
+            case "+":
+            case "-":
+            case "*":
+            case "/":
+                jtf.setText(jtf.getText() + str);
+                break;
+
+            // 클리어 버튼
+            case "C":
+                jtf.setText("");
+                break;
+
+            // 결과 버튼
+            case "=":
+                String t = jtf.getText(); // 계산식 가져오기
+
+                CalLogic cl = new CalLogic();
+
+                int result = cl.계산하기(t); // 계산 기능 호출
+
+                // 계산 결과 화면에 보여주기
+                jtf.setText("" + result);
+                break;
         }
-
-
-//        switch ( str ) {
-//            case "1":
-//                jtf.setText("1");
-//                break;
-//            case "2":
-//                jtf.setText("2");
-//            case "3":
-//                jtf.setText("3");
-//
-//
-//        }
-
-//        if (str.equals("1")) {
-//            jtf.setText("1");
-//        } else if (str.equals("2")) {
-//            jtf.setText("2");
-//        } else if (str.equals("3")) {
-//            jtf.setText("3");
-//        } else if (str.equals("4")) {
-//            jtf.setText("4");
-//        } else if (str.equals("5")) {
-//            jtf.setText("5");
-//        }
     }
 }
