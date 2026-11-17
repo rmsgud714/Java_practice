@@ -3,7 +3,7 @@ import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
 
 import static java.nio.file.Files.write;
-
+// 여기 코드 통째로 외워야함 중요한 부분
 // 자바에서 데이터 입출력 하는 방법
 public class IOEX {
     public static void main(String args[]) throws IOException {
