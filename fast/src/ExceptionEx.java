@@ -37,6 +37,10 @@ public class ExceptionEx {
             System.out.println("배열 범위 초과 예외 발생2");
         }catch ( Exception e ) {
             System.out.println("뭔진 모르겠지만 오류 발생");
+        }finally {
+            // 예외 처리 여부와 상관없이 무조건 실행
+            // 자원해제 관련된 코드가 주로 사용됨
+
         }
 
 
