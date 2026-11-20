@@ -50,6 +50,7 @@ class ClientUI extends JFrame{
                 String msg = jf.getText();
                 os.write(msg.getBytes());   // 문자열 -> byte 배열로 변경후 전송
                 jf.setText("");
+                client.close();
             } catch ( IOException ignore ) {
                 System.out.println("문제 발생");
             }
