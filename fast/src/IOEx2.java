@@ -2,10 +2,7 @@
 // 파일에 데이터 일고 쓰기
 
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class IOEx2 {
     public static void  main(String args[]){
@@ -27,27 +24,37 @@ public class IOEx2 {
 
         try {
             FileReader fr = new FileReader("c://swtest/test3.txt");
-            int result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
-            System.out.print((char)result);
-            result = fr.read();
+            BufferedReader br = new BufferedReader( fr );
+            String str = br.readLine(); // 한줄 읽기
+            System.out.println( str.trim() );  // trim　빈공백 제거
+
+//            char[] c = new char[256];
+//            fr.read( c );
+//            String str = new String(c);
+
+//            System.out.println(c[0]);
+//            System.out.println(c[1]);
+//
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
+//            System.out.print((char)result);
+//            result = fr.read();
 
 
 
